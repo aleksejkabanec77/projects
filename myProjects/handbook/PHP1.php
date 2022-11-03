@@ -16,6 +16,7 @@
       <nav class="blog-navigation">
         <h2>темы:</h2>
         <?php
+            //echo $_SERVER['PHP_SELF'];
             $theme = [
                 'Arrays.php' => 'Массивы', 
                 'Cycles.php' => 'Циклы', 
