@@ -47,6 +47,12 @@ foreach($adsOld as $key => $value){
     echo "<br>";
 }
 
+$number = 10999;
+
+$numberFormat = number_format($number, 2, ",", " ");
+echo $numberFormat;
+
+
                         //foreach($tasks as $keyTasks => $valueTasks){
                             //$show_complete_tasks = 1;
                             //if($show_complete_tasks == 0){
