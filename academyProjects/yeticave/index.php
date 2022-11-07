@@ -54,7 +54,9 @@ $ads = [
         "image" => "img/lot-6.jpg"
     ]        
 ];
-
+/*
+ * Функция для форматирования строки вывода цены
+ */
 function formatPrise($prise){
   $valueAdsFormat = number_format($prise, 2, ",", " ");
   $valueAdsFormat = $valueAdsFormat . " &#8381";
