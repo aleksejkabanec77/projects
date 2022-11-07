@@ -41,3 +41,81 @@ $adsOld = [
         
 ];
 
+foreach($adsOld as $key => $value){
+    if($key == "Цена") continue;
+    echo $key;
+    echo "<br>";
+}
+
+                        //foreach($tasks as $keyTasks => $valueTasks){
+                            //$show_complete_tasks = 1;
+                            //if($show_complete_tasks == 0){
+                                //if($valueTasks['implementation']) continue;
+                            //}                             
+                            //if($valueTasks["implementation"]){
+                                //echo"<tr class='tasks__item task task--completed'>";
+                            //}else{
+                                //echo"<tr class='tasks__item task'>";                         
+                            //}
+                        ////if($show_complete_tasks == 0) continue;
+                        //echo"<td class='task__select'>";
+                                    //echo"<label class='checkbox task__checkbox'>";
+                                        //echo"<input class='checkbox__input visually-hidden task__checkbox' type='checkbox' value='1'>";
+                                        //echo"<span class='checkbox__text'>{$valueTasks['title']}</span>";
+                                    //echo"</label>";
+                                //echo"</td>";
+                                //echo"<td class='task__file'>";
+                                    //echo"<a class='download-link' href='#'>Home.psd</a>";
+                                //echo"</td>";                        
+                            //echo"<td class='task__date'>{$valueTasks['dateCompletion']}</td>";                    
+                            //echo"</tr>";
+                           //} 
+
+                        foreach($tasks as $keyTasks => $valueTasks){
+                            $show_complete_tasks = 1;
+                            if($show_complete_tasks == 0){
+                                if($valueTasks['implementation']) continue;
+                            }                             
+                            if($valueTasks["implementation"]){
+                                echo"<tr class='tasks__item task task--completed'>";
+                            }else{
+                                echo"<tr class='tasks__item task'>";                         
+                            }
+                        //if($show_complete_tasks == 0) continue;
+                        echo <<<CON
+                            <td class='task__select'>
+                                <label class='checkbox task__checkbox'>
+                                    <input class='checkbox__input visually-hidden task__checkbox' type='checkbox' value='1'>
+                                    <span class='checkbox__text'>{$valueTasks['title']}</span>
+                                </label>
+                            </td>
+                            <td class='task__file'>
+                                <a class='download-link' href='#'>Home.psd</a>
+                            </td>                        
+                                <td class='task__date'>{$valueTasks['dateCompletion']}</td>                    
+                            </tr>
+CON;                            
+                           } 
+
+?>
+<ul>
+<?php
+foreach($adsOld as $key => $value) :?>
+    <?php
+    if($key == "Цена"): 
+        continue; ?>
+    <li><?= $key ?></li>
+    <?php endif ?>
+<?php endforeach ?>
+</ul>
+    
+<ul>
+<?php
+foreach($adsOld as $key => $value){
+    if($key == "URL картинки") continue;
+    echo <<<EOT
+    <li>"$key"</li>
+EOT;
+}
+?>
+</ul>
