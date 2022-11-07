@@ -54,8 +54,9 @@ $ads = [
         "image" => "img/lot-6.jpg"
     ]        
 ];
-/*
+/**
  * Функция для форматирования строки вывода цены
+ * @param namber $prise - $valueAds["prise"] для форматирования и добавления знака рубля
  */
 function formatPrise($prise){
   $valueAdsFormat = number_format($prise, 2, ",", " ");
