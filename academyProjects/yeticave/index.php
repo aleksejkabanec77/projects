@@ -57,6 +57,7 @@ $ads = [
 /**
  * Функция для форматирования строки вывода цены
  * @param namber $prise - $valueAds["prise"] для форматирования и добавления знака рубля
+ * @return string $valueAdsFormat - форматированая строка цены
  */
 function formatPrise($prise){
   $valueAdsFormat = number_format($prise, 2, ",", " ");
@@ -70,8 +71,8 @@ function formatPrise($prise){
 <head>
     <meta charset="UTF-8">
     <title>Главная</title>
-    <link href="../css/normalize.min.css" rel="stylesheet">
-    <link href="../css/style.css" rel="stylesheet">
+    <link href="css/normalize.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
 <div class="page-wrapper">
