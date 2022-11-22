@@ -2,57 +2,75 @@
 // показывать или нет выполненные задачи
 //$show_complete_tasks = rand(0, 1);
 $show_complete_tasks = 1;
-/* 
- * Создаем каталог для проектов
- */
-$categories = [
-                "inbox" => "входящие", 
-                "studies" => "учеба", 
-                "work" => "работа", 
-                "housework" => "домашние дела",  
-                "auto" => "авто"
-];
+                      
 /*
- * Двумерный массив для вывода объявлений
+ * Массив дел
  */
 $tasks = [
     [
         "title" => "Собеседование в IT компании",
         "dateCompletion" => "01.12.2019",        
-        "category" => $categories["work"],
+        "category" => 'Работа',
         "implementation" => false
     ],
     [
         "title" => "Выполнить тестовое задание",
         "dateCompletion" => "25.12.2019",
-        "category" => $categories["work"],
+        "category" => 'Работа',
         "implementation" => false
     ],
     [
         "title" => "Сделать задание первого раздела",
         "dateCompletion" => "21.12.2019",        
-        "category" => $categories["studies"],
+        "category" => 'Учеба',
         "implementation" => true
     ],
     [
         "title" => "Встреча с другом",
         "dateCompletion" => "22.12.2019",        
-        "category" => $categories["inbox"],
+        "category" => 'Входящие',
         "implementation" => false
     ],
     [
         "title" => "Купить корм для кота",
         "dateCompletion" => "null",        
-        "category" => $categories["housework"],
+        "category" => 'Домашние дела',
         "implementation" => false
     ],
     [
         "title" => "Заказать пиццу",
-        "dateCompletion" => "	null",        
-        "category" => $categories["housework"],
+        "dateCompletion" => "null",        
+        "category" => 'Домашние дела',
         "implementation" => false
     ]        
 ];
+/*
+ * Массив для меню
+ */
+$categories = [
+                "Входящие", 
+                "Учеба", 
+                "Работа", 
+                "Домашние дела", 
+                "Авто"
+];
+/**
+ * Функция формирует массив для меню и счетчика
+ * @param array $tasks - массив дел
+ * @param array $categories - массив категорий
+ * @return array $tasksCategorys - массив для итерации и вывода меню и количества дел
+ */
+ 
+function arrayMenuCounter(array $tasks, array $categories) : array
+{
+    $tasksCategoryCount = array_count_values(array_column($tasks, 'category'));
+    $newCategories = array_flip($categories);
+    $comparisonResult = array_diff_key($newCategories, $tasksCategoryCount);
+    $resultNull = array_fill_keys(array_flip($comparisonResult), 0);
+    $tasksCategorys = $tasksCategoryCount + $resultNull;
+    return $tasksCategorys;   
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -95,10 +113,10 @@ $tasks = [
                 <nav class="main-navigation">
                     <ul class="main-navigation__list">
                         <?php
-                        foreach($categories as $keyCategories => $valueCategories): ?>                          
+                        foreach(arrayMenuCounter($tasks, $categories) as $keyTasksCategorys => $valueTasksCategorys): ?>                          
                             <li class="main-navigation__list-item">
-                                <a class="main-navigation__list-item-link" href="#"><?= $valueCategories ?></a>
-                                <span class="main-navigation__list-item-count">0</span>
+                                <a class="main-navigation__list-item-link" href="#"><?= $keyTasksCategorys ?></a>
+                                <span class="main-navigation__list-item-count"><?= $valueTasksCategorys ?></span>
                             </li>
                         <?php endforeach; ?>                        
                     </ul>
@@ -133,32 +151,8 @@ $tasks = [
                 </div>
 
                     <table class="tasks">
-                        <?php
-                        //foreach($tasks as $keyTasks => $valueTasks){
-                            //$show_complete_tasks = 1;
-                            //if($show_complete_tasks == 0){
-                                //if($valueTasks['implementation']) continue;
-                            //}                             
-                            //if($valueTasks["implementation"]){
-                                //echo"<tr class='tasks__item task task--completed'>";
-                            //}else{
-                                //echo"<tr class='tasks__item task'>";                         
-                            //}
-                        ////if($show_complete_tasks == 0) continue;
-                        //echo"<td class='task__select'>";
-                                    //echo"<label class='checkbox task__checkbox'>";
-                                        //echo"<input class='checkbox__input visually-hidden task__checkbox' type='checkbox' value='1'>";
-                                        //echo"<span class='checkbox__text'>{$valueTasks['title']}</span>";
-                                    //echo"</label>";
-                                //echo"</td>";
-                                //echo"<td class='task__file'>";
-                                    //echo"<a class='download-link' href='#'>Home.psd</a>";
-                                //echo"</td>";                        
-                            //echo"<td class='task__date'>{$valueTasks['dateCompletion']}</td>";                    
-                            //echo"</tr>";
-                           //} 
+<?php
                         foreach($tasks as $keyTasks => $valueTasks){
-                            //$show_complete_tasks = 0;
                             if($show_complete_tasks == 0){
                                 if($valueTasks['implementation']) continue;
                             }                             
@@ -167,20 +161,20 @@ $tasks = [
                             }else{
                                 echo"<tr class='tasks__item task'>";                         
                             }
-                        //if($show_complete_tasks == 0) continue;
-                        echo <<<CON
-                            <td class='task__select'>
-                                <label class='checkbox task__checkbox'>
-                                    <input class='checkbox__input visually-hidden task__checkbox' type='checkbox' value='1'>
-                                    <span class='checkbox__text'>{$valueTasks['title']}</span>
-                                </label>
-                            </td>
-                            <td class='task__file'>
-                                <a class='download-link' href='#'>Home.psd</a>
-                            </td>                        
-                                <td class='task__date'>{$valueTasks['dateCompletion']}</td>                    
-                            </tr>
-CON;                            
+                        
+echo <<<CON
+<td class='task__select'>
+<label class='checkbox task__checkbox'>
+<input class='checkbox__input visually-hidden task__checkbox' type='checkbox' value='1'>
+<span class='checkbox__text'>{$valueTasks['title']}</span>
+</label>
+</td>
+<td class='task__file'>
+<a class='download-link' href='#'>Home.psd</a>
+</td>
+<td class='task__date'>{$valueTasks['dateCompletion']}</td>
+</tr>
+CON;
                            }                           
                            ?>                            
                             <!--показывать следующий тег <tr/>, если переменная $show_complete_tasks равна единице-->
