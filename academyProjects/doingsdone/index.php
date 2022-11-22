@@ -1,7 +1,7 @@
 <?php
 // показывать или нет выполненные задачи
-//$show_complete_tasks = rand(0, 1);
-$show_complete_tasks = 1;
+$show_complete_tasks = rand(0, 1);
+//$show_complete_tasks = 1;
                       
 /*
  * Массив дел
@@ -145,7 +145,8 @@ function arrayMenuCounter(array $tasks, array $categories) : array
 
                     <label class="checkbox">
                         <!--добавить сюда атрибут "checked", если переменная $show_complete_tasks равна единице-->                        
-                        <input class="checkbox__input visually-hidden show_completed" type="checkbox"<?php if($show_complete_tasks == 1) :?>checked<?php endif ?>>
+                        <input class="checkbox__input visually-hidden show_completed" type="checkbox"
+                        <?php if($show_complete_tasks == 1) :?> checked <?php endif ?>>
                         <span class="checkbox__text">Показывать выполненные</span>
                     </label>
                 </div>

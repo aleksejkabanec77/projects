@@ -60,9 +60,11 @@ $ads = [
  * @return string $valueAdsFormat - форматированая строка цены
  */
 function formatPrise($prise){
-  $valueAdsFormat = number_format($prise, 2, ",", " ");
-  $valueAdsFormat = $valueAdsFormat . " &#8381";
-  return $valueAdsFormat;
+    //(int) $prise;
+    //$priseFloat = settype($prise, "float");
+    $valueAdsFormat = number_format($prise, 2, ",", " ");
+    $valueAdsFormat = $valueAdsFormat . " &#8381";
+    return $valueAdsFormat;
 }
 
 ?>
@@ -95,7 +97,7 @@ function formatPrise($prise){
         
         <?php if($is_auth == 1): ?>
             <div class="user-menu__logged">
-              <p>guest</p>
+              <p><?= $user_name ?></p>
               <a class="user-menu__bets" href="pages/my-bets.html">Мои ставки</a>
               <a class="user-menu__logout" href="#">Выход</a>
             </div>
