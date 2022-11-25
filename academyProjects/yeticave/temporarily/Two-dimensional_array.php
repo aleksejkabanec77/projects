@@ -119,9 +119,68 @@ foreach($adsOld as $key => $value) :?>
 <?php
 foreach($adsOld as $key => $value){
     if($key == "URL картинки") continue;
-    echo <<<EOT
-    <li>"$key"</li>
+echo <<<EOT
+<li>"$key"</li>
 EOT;
 }
 ?>
 </ul>
+$categories = [
+                "boardsAndSkis" => "Доски и лыжи", 
+                "mounts" => "Крепления", 
+                "boots" => "Ботинки", 
+                "garments" => "Одежда", 
+                "tools" => "Инструменты", 
+                "sundries" => "Разное"
+];
+/*
+ * Двумерный массив для вывода объявлений
+ */
+$ads = [
+    [
+        "title" => "2014 Rossignol District Snowboard",
+        "category" => $categories["boardsAndSkis"],
+        "prise" => 10999,
+        "image" => "img/lot-1.jpg"
+    ],
+    [
+        "title" => "DC Ply Mens 2016/2017 Snowboard",
+        "category" => $categories["boardsAndSkis"],
+        "prise" => 159999,
+        "image" => "img/lot-2.jpg"
+    ],
+    [
+        "title" => "Крепления Union Contact Pro 2015 года размер L/XL",
+        "category" => $categories["mounts"],
+        "prise" => 8000,
+        "image" => "img/lot-3.jpg"
+    ],
+        [
+        "title" => "Ботинки для сноуборда DC Mutiny Charocal",
+        "category" => $categories["boots"],
+        "prise" => 10999,
+        "image" => "img/lot-4.jpg"
+    ],
+    [
+        "title" => "Куртка для сноуборда DC Mutiny Charocal",
+        "category" => $categories["garments"],
+        "prise" => 7500,
+        "image" => "img/lot-5.jpg"
+    ],
+    [
+        "title" => "Маска Oakley Canopy",
+        "category" => $categories["sundries"],
+        "prise" => 5400,
+        "image" => "img/lot-6.jpg"
+    ]        
+];
+/**
+ * Функция для форматирования строки вывода цены
+ * @param namber $prise - $valueAds["prise"] для форматирования и добавления знака рубля
+ * @return string $valueAdsFormat - форматированая строка цены
+ */
+function formatPrise($prise){
+    $valueAdsFormat = number_format($prise, 2, ",", " ");
+    $valueAdsFormat = $valueAdsFormat . " &#8381";
+    return $valueAdsFormat;
+}

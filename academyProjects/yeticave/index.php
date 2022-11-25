@@ -3,70 +3,67 @@ $is_auth = rand(0, 1);
 
 $user_name = 'guest'; // укажите здесь ваше имя
 /* 
- * Создаем каталог для меню
- */
-$categories = [
-                "boardsAndSkis" => "Доски и лыжи", 
-                "mounts" => "Крепления", 
-                "boots" => "Ботинки", 
-                "garments" => "Одежда", 
-                "tools" => "Инструменты", 
-                "sundries" => "Разное"
-];
-/*
- * Двумерный массив для вывода объявлений
+ * Создаем каталог для объявлений
  */
 $ads = [
     [
         "title" => "2014 Rossignol District Snowboard",
-        "category" => $categories["boardsAndSkis"],
-        "prise" => 10999,
+        "category" => "Доски и лыжи",
+        "prise" => (float)10999,
         "image" => "img/lot-1.jpg"
     ],
     [
         "title" => "DC Ply Mens 2016/2017 Snowboard",
-        "category" => $categories["boardsAndSkis"],
-        "prise" => 159999,
+        "category" => "Доски и лыжи",
+        "prise" => (float)159999,
         "image" => "img/lot-2.jpg"
     ],
     [
         "title" => "Крепления Union Contact Pro 2015 года размер L/XL",
-        "category" => $categories["mounts"],
-        "prise" => 8000,
+        "category" => "Крепления",
+        "prise" => (float)8000,
         "image" => "img/lot-3.jpg"
     ],
         [
         "title" => "Ботинки для сноуборда DC Mutiny Charocal",
-        "category" => $categories["boots"],
-        "prise" => 10999,
+        "category" => "Ботинки",
+        "prise" => (float)10999,
         "image" => "img/lot-4.jpg"
     ],
     [
         "title" => "Куртка для сноуборда DC Mutiny Charocal",
-        "category" => $categories["garments"],
-        "prise" => 7500,
+        "category" => "Одежда",
+        "prise" => (float)7500,
         "image" => "img/lot-5.jpg"
     ],
     [
         "title" => "Маска Oakley Canopy",
-        "category" => $categories["sundries"],
-        "prise" => 5400,
+        "category" => "Разное",
+        "prise" => (float)5400,
         "image" => "img/lot-6.jpg"
     ]        
 ];
+/* 
+ * Создаем каталог для меню
+ */
+$categories = [
+                "Доски и лыжи", 
+                "Крепления", 
+                "Ботинки", 
+                "Одежда", 
+                "Инструменты", 
+                "Разное"
+];
 /**
  * Функция для форматирования строки вывода цены
- * @param namber $prise - $valueAds["prise"] для форматирования и добавления знака рубля
+ * @param float $prise - $valueAds["prise"] для форматирования и добавления знака рубля
  * @return string $valueAdsFormat - форматированая строка цены
  */
 function formatPrise($prise){
-    //(int) $prise;
-    //$priseFloat = settype($prise, "float");
     $valueAdsFormat = number_format($prise, 2, ",", " ");
     $valueAdsFormat = $valueAdsFormat . " &#8381";
     return $valueAdsFormat;
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -148,9 +145,6 @@ function formatPrise($prise){
                             <div class="lot__rate">
                                 <span class="lot__amount">Стартовая цена</span>
                                 <span class="lot__cost">цена<?=" " . formatPrise($valueAds["prise"]) ?></span>
-<!--
-                                <b class="rub">р</b>
--->
                             </div> 
                             <div class="lot__timer timer">
                                 12:23
