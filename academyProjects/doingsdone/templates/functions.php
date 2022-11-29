@@ -1,4 +1,5 @@
 <?php
+
 //$show_complete_tasks = rand(0, 1);
 /**
  * Подключает шаблон, передает туда данные и возвращает итоговый HTML контент
@@ -36,5 +37,6 @@ function arrayMenuCounter(array $tasks, array $categories) : array
     $comparisonResult = array_diff_key($newCategories, $tasksCategoryCount);
     $resultNull = array_fill_keys(array_flip($comparisonResult), 0);
     $tasksCategorys = $tasksCategoryCount + $resultNull;
-    return $tasksCategorys;   
+    return $tasksCategorys;
 }
+

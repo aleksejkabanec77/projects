@@ -5,6 +5,7 @@
 $tasks = [
     [
         "title" => "Собеседование в IT компании",
+        //"title" => "<a href='a' onmouseover=alert(1337) style='font-size:500px'>",
         "dateCompletion" => "01.12.2019",        
         "category" => 'Работа',
         "implementation" => false
