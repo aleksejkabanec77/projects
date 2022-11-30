@@ -62,7 +62,7 @@ echo <<<CON
 <input class='checkbox__input visually-hidden task__checkbox' type='checkbox' value='1'>
 CON;
 
-echo "<span class='checkbox__text'>" . htmlspecialchars($valueTasks['title']) . "</span>";
+echo "<span class='checkbox__text'>" . htmlspecialchars($valueTasks['title'], ENT_QUOTES) . "</span>";
 
 echo <<<CON1
 </label>
@@ -72,7 +72,7 @@ echo <<<CON1
 </td>
 CON1;
 
-echo "<td class='task__date'>" . htmlspecialchars($valueTasks['dateCompletion']) . "</td></tr>";
+echo "<td class='task__date'>" . htmlspecialchars($valueTasks['dateCompletion'], ENT_QUOTES) . "</td></tr>";
 
                            }
 ?>                                
