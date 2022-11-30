@@ -29,7 +29,7 @@
                     <div class="lot__state">
                         <div class="lot__rate">
                             <span class="lot__amount">Стартовая цена</span>
-                            <span class="lot__cost">цена<?= " " . htmlspecialchars(formatPrise($valueAds["prise"]), ENT_QUOTES) ?></span>
+                            <span class="lot__cost">цена<?= " " . formatPrise($valueAds["prise"]) ?></span>
                         </div> 
                         <div class="lot__timer timer">
                             12:23

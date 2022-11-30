@@ -30,6 +30,6 @@ function include_template($name, array $data = []) {
  */
 function formatPrise($prise){
     $valueAdsFormat = number_format($prise, 2, ",", " ");
-    $valueAdsFormat = $valueAdsFormat . " &#8381";
+    $valueAdsFormat = htmlspecialchars($valueAdsFormat, ENT_QUOTES) . " &#8381";
     return $valueAdsFormat;
 }
