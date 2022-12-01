@@ -38,7 +38,7 @@ function formatPrise($prise){
  * @param string - $dateEnd дата окончания лота
  * @return string - $periodOutput вывод строки количества оставшегося времени
  */
-function residueTime($dateEnd) : string
+function residueTime(string $dateEnd) : string
 {
     $dateEnd = strtotime($dateEnd);
     $dateEnd = (int)$dateEnd;
