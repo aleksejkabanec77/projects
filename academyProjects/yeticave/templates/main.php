@@ -31,9 +31,12 @@
                             <span class="lot__amount">Стартовая цена</span>
                             <span class="lot__cost">цена<?= " " . formatPrise($valueAds["prise"]) ?></span>
                         </div> 
+<!--
                         <div class="lot__timer timer">
                             12:23
                         </div>
+-->
+                        <?= residueTime($valueAds["dateEnd"]); ?>
                     </div>
                 </div>
             </li>

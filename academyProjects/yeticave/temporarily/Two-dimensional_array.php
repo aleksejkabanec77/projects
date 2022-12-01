@@ -89,19 +89,19 @@ echo $numberFormat;
                             }
                         //if($show_complete_tasks == 0) continue;
                         echo <<<CON
-                            <td class='task__select'>
-                                <label class='checkbox task__checkbox'>
-                                    <input class='checkbox__input visually-hidden task__checkbox' type='checkbox' value='1'>
-                                    <span class='checkbox__text'>{$valueTasks['title']}</span>
-                                </label>
-                            </td>
-                            <td class='task__file'>
-                                <a class='download-link' href='#'>Home.psd</a>
-                            </td>                        
-                                <td class='task__date'>{$valueTasks['dateCompletion']}</td>                    
-                            </tr>
-CON;                            
-                           } 
+<td class='task__select'>
+<label class='checkbox task__checkbox'>
+<input class='checkbox__input visually-hidden task__checkbox' type='checkbox' value='1'>
+<span class='checkbox__text'>{$valueTasks['title']}</span>
+</label>
+</td>
+<td class='task__file'>
+<a class='download-link' href='#'>Home.psd</a>
+</td>                        
+<td class='task__date'>{$valueTasks['dateCompletion']}</td>                    
+</tr>
+CON;
+} 
 
 ?>
 <ul>
@@ -125,6 +125,7 @@ EOT;
 }
 ?>
 </ul>
+<?php
 $categories = [
                 "boardsAndSkis" => "Доски и лыжи", 
                 "mounts" => "Крепления", 
@@ -174,6 +175,7 @@ $ads = [
         "image" => "img/lot-6.jpg"
     ]        
 ];
+
 /**
  * Функция для форматирования строки вывода цены
  * @param namber $prise - $valueAds["prise"] для форматирования и добавления знака рубля
@@ -184,3 +186,64 @@ function formatPrise($prise){
     $valueAdsFormat = $valueAdsFormat . " &#8381";
     return $valueAdsFormat;
 }
+
+//echo strtotime("2022-12-22");
+$dateEnd = "2022-12-02";
+//(int)$dateEnd = strtotime($dateEnd) . "\n";
+//(int)$datetime = time();
+//echo $datetime . "\n";
+//(int)$end = $dateEnd - $datetime;
+////echo min($dateEnd, $datetime);
+//echo $end . "\n";
+//$endHour = $end / 3600;
+//$endMinute = ($end % 3600) / 60;
+//echo (int)$endHour . " ч. \n";
+//echo (int)$endMinute . " мин. \n";
+
+/**
+ * Функция для вывода оставшевося времени лота
+ * @param string - $dateEnd дата окончания лота
+ * @return string - $periodOutput вывод строки количества оставшегося времени
+ */
+function residueTime($dateEnd) : string
+{
+    $dateEnd = strtotime($dateEnd);
+    $dateEnd = (int)$dateEnd;
+    $datetime = time();
+    $datetime = (int)$datetime;
+    $end = $dateEnd - $datetime;
+    $endHour = $end / 3600;
+    $endMinute = ($end % 3600) / 60;
+    $period = (int)$endHour . " ч. " . (int)$endMinute . " мин.";
+    if($endHour < 0){
+        $period = "Товар должен быть удален!";
+        $periodOutput = <<<OUT
+<div class="lot__timer timer timer--finishing">
+$period
+</div>
+OUT;
+        return $periodOutput;
+    }elseif($endHour = 0){
+        $period = (int)$endMinute . " мин. ";
+        $periodOutput = <<<OUT
+<div class="lot__timer timer timer--finishing">
+$period
+</div>
+OUT;
+        return $periodOutput;
+    }else{
+        $periodOutput = <<<OUT
+<div class="lot__timer timer">
+$period
+</div>
+OUT;
+        return $periodOutput;        
+    }
+}
+
+echo residueTime($dateEnd);
+
+
+
+
+

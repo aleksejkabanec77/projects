@@ -33,3 +33,43 @@ function formatPrise($prise){
     $valueAdsFormat = htmlspecialchars($valueAdsFormat, ENT_QUOTES) . " &#8381";
     return $valueAdsFormat;
 }
+/**
+ * Функция для вывода оставшевося времени лота
+ * @param string - $dateEnd дата окончания лота
+ * @return string - $periodOutput вывод строки количества оставшегося времени
+ */
+function residueTime($dateEnd) : string
+{
+    $dateEnd = strtotime($dateEnd);
+    $dateEnd = (int)$dateEnd;
+    $datetime = time();
+    $datetime = (int)$datetime;
+    $end = $dateEnd - $datetime;
+    $endHour = $end / 3600;
+    $endMinute = ($end % 3600) / 60;
+    $period = (int)$endHour . " ч. " . (int)$endMinute . " мин.";
+    if($endHour < 0){
+        $period = "Товар должен быть удален!";
+        $periodOutput = <<<OUT
+<div class="lot__timer timer timer--finishing">
+$period
+</div>
+OUT;
+        return $periodOutput;
+    }elseif($endHour = 0){
+        $period = (int)$endMinute . " мин. ";
+        $periodOutput = <<<OUT
+<div class="lot__timer timer timer--finishing">
+$period
+</div>
+OUT;
+        return $periodOutput;
+    }else{
+        $periodOutput = <<<OUT
+<div class="lot__timer timer">
+$period
+</div>
+OUT;
+        return $periodOutput;        
+    }
+}
