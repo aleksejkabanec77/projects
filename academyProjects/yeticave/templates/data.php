@@ -20,7 +20,7 @@ $ads = [
         "title" => "2014 Rossignol District Snowboard",
         "category" => "Доски и лыжи",
         "prise" => (float)10999,
-        "dateEnd" => "2022-12-01",
+        "dateEnd" => "2022-12-03",
         "image" => "img/lot-1.jpg"
     ],
     [

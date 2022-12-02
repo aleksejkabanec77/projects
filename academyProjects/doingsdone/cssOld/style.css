@@ -2,14 +2,14 @@
   font-weight: 400;
   font-family: "OpenSans";
   font-style: normal;
-  src: url("../fonts/opensans-regular-webfont.woff2") format("woff2"), url("../fonts/opensans-regular-webfont.woff") format("woff");
+  src: url("fonts/opensans-regular-webfont.woff2") format("woff2"), url("../fonts/opensans-regular-webfont.woff") format("woff");
 }
 
 @font-face {
   font-weight: 700;
   font-family: "OpenSans";
   font-style: normal;
-  src: url("../fonts/opensans-bold-webfont.woff2") format("woff2"), url("../fonts/opensans-bold-webfont.woff") format("woff");
+  src: url("fonts/opensans-bold-webfont.woff2") format("woff2"), url("../fonts/opensans-bold-webfont.woff") format("woff");
 }
 
 .visually-hidden:not(:focus):not(:active),
@@ -71,7 +71,7 @@ a:focus {
 }
 
 .body-background {
-  background: #ffffff url("../img/background.jpg") no-repeat 0 0;
+  background: #ffffff url("img/background.jpg") no-repeat 0 0;
   background-size: cover;
 }
 
@@ -197,7 +197,7 @@ a:focus {
 
   font-size: 0;
 
-  background: transparent url("../img/icon-close.svg") no-repeat 50% 50%;
+  background: transparent url("img/icon-close.svg") no-repeat 50% 50%;
   border: 0;
 }
 
@@ -357,7 +357,7 @@ a:focus {
 
   font-size: 0;
 
-  background: transparent url("../img/search.png") no-repeat 50% 50%;
+  background: transparent url("img/search.png") no-repeat 50% 50%;
   border: 0;
 }
 
@@ -533,7 +533,7 @@ a:focus {
   width: 13px;
   height: 14px;
 
-  background: url("../img/fire.png") no-repeat 0 0;
+  background: url("img/fire.png") no-repeat 0 0;
 }
 
 .task--important .task__select .checkbox__text {
@@ -585,7 +585,7 @@ a:focus {
   width: 14px;
   height: 16px;
 
-  background: url("../img/download-link.png") no-repeat;
+  background: url("img/download-link.png") no-repeat;
 }
 
 .expand-control {
@@ -719,16 +719,16 @@ a:focus {
 }
 
 .form__input--error {
-  background: transparent url("../img/icon-error.png") no-repeat right 10px top 50%;
+  background: transparent url("img/icon-error.png") no-repeat right 10px top 50%;
   border-color: #f84646;
 }
 
 .form__input--select {
-  background: #ffffff url("../img/dropdown.svg") right 20px top 50% no-repeat;
+  background: #ffffff url("img/dropdown.svg") right 20px top 50% no-repeat;
 }
 
 .form__input--date {
-  background: #ffffff url("../img/icon-calendar.png") right 17px top 50% no-repeat;
+  background: #ffffff url("img/icon-calendar.png") right 17px top 50% no-repeat;
 }
 
 .form__row--controls {

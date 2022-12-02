@@ -59,4 +59,90 @@ function counterCase($tasks, $categorieNew){
     }else{
         return $tasksCategoryCount = 0; 
     }    
-}                                  
+} 
+
+$dateEnd = "02.12.2022";
+//(int)$dateEnd = strtotime($dateEnd) . "\n";
+//(int)$datetime = time();
+//echo $datetime . "\n";
+//(int)$end = $dateEnd - $datetime;
+//echo $end . "\n";
+//$endHour = $end / 3600;
+//$endMinute = ($end % 3600) / 60;
+//echo (int)$endHour . " ч. \n";
+//echo (int)$endMinute . " мин. \n";
+/**
+ * Функция для вывода оставшевося времени лота
+ * @param string - $dateEnd дата окончания лота
+ * @return string - $periodOutput вывод строки количества оставшегося времени
+ */
+function residueTime(string $dateEnd) : string
+{
+    $dateEnd = strtotime($dateEnd);
+    $dateEnd = (int)$dateEnd;
+    $datetime = time();
+    $datetime = (int)$datetime;
+    $end = $dateEnd - $datetime;
+    
+    $endHour = $end / 3600;
+    $endMinute = ($end % 3600) / 60;
+    $period = (int)$endHour . " ч. " . (int)$endMinute . " мин.";
+    if($endHour < 0){
+        $period = "Товар должен быть удален!";
+        $periodOutput = <<<OUT
+<div class="lot__timer timer timer--finishing">
+$period
+</div>
+OUT;
+        return $periodOutput;
+    }elseif($endHour = 0){
+        $period = (int)$endMinute . " мин. ";
+        $periodOutput = <<<OUT
+<div class="lot__timer timer timer--finishing">
+$period
+</div>
+OUT;
+        return $periodOutput;
+    }else{
+        $periodOutput = <<<OUT
+<div class="lot__timer timer">
+$period
+</div>
+OUT;
+        return $periodOutput;        
+    }
+}
+
+echo residueTime($dateEnd);
+
+function residueTime1(string $dateEnd) : string
+{
+    $dateEnd = strtotime($dateEnd);
+    $dateEnd = (int)$dateEnd;
+    $datetime = time();
+    $datetime = (int)$datetime;
+    $end = $dateEnd - $datetime;
+    $endHour = $end / 3600;
+    if($endHour <= 24){
+        $timeLeft = <<<OUT
+<td class='task__date task--important'>
+OUT;
+        return $timeLeft;
+    }
+    $timeLeft = <<<OUT1
+<td class='task__date'>
+OUT1;
+}
+
+echo residueTime1($dateEnd);
+
+
+//"<td class='task__date'>"
+
+
+
+
+
+
+
+                                 

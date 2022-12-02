@@ -6,37 +6,37 @@ $tasks = [
     [
         "title" => "Собеседование в IT компании",
         //"title" => "<a href='a' onmouseover=alert(1337) style='font-size:500px'>",
-        "dateCompletion" => "01.12.2019",        
+        "dateCompletion" => "02.12.2022",        
         "category" => 'Работа',
         "implementation" => false
     ],
     [
         "title" => "Выполнить тестовое задание",
-        "dateCompletion" => "25.12.2019",
+        "dateCompletion" => "25.12.2022",
         "category" => 'Работа',
         "implementation" => false
     ],
     [
         "title" => "Сделать задание первого раздела",
-        "dateCompletion" => "21.12.2019",        
+        "dateCompletion" => "21.12.2022",        
         "category" => 'Учеба',
         "implementation" => true
     ],
     [
         "title" => "Встреча с другом",
-        "dateCompletion" => "22.12.2019",        
+        "dateCompletion" => "22.12.2022",        
         "category" => 'Входящие',
         "implementation" => false
     ],
     [
         "title" => "Купить корм для кота",
-        "dateCompletion" => "null",        
+        "dateCompletion" => "02.12.2022",        
         "category" => 'Домашние дела',
         "implementation" => false
     ],
     [
         "title" => "Заказать пиццу",
-        "dateCompletion" => "null",        
+        "dateCompletion" => "12.12.2022",        
         "category" => 'Домашние дела',
         "implementation" => false
     ]        

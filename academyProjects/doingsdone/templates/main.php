@@ -72,7 +72,7 @@ echo <<<CON1
 </td>
 CON1;
 
-echo "<td class='task__date'>" . htmlspecialchars($valueTasks['dateCompletion'], ENT_QUOTES) . "</td></tr>";
+echo residueTime($valueTasks['dateCompletion']) . htmlspecialchars($valueTasks['dateCompletion'], ENT_QUOTES) . "</td></tr>";
 
                            }
 ?>                                

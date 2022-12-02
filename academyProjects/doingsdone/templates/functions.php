@@ -39,4 +39,28 @@ function arrayMenuCounter(array $tasks, array $categories) : array
     $tasksCategorys = $tasksCategoryCount + $resultNull;
     return $tasksCategorys;
 }
-
+/**
+ * Функция для вывода цвета при оставшемся времени < 24 ч.
+ * @param string - $dateEnd дата выполнения дела
+ * @return string - $timeLeft вывод цвета для дела
+ */
+function residueTime(string $dateEnd) : string
+{
+    $dateEnd = strtotime($dateEnd);
+    $dateEnd = (int)$dateEnd;
+    $datetime = time();
+    $datetime = (int)$datetime;
+    $end = $dateEnd - $datetime;
+    $endHour = $end / 3600;
+    $endHour = (int)$endHour;
+    if($endHour <= 24){
+        $timeLeft = <<<OUT
+<td class='task__date task--important'>
+OUT;
+        return $timeLeft;
+    }
+    $timeLeft = <<<OUT1
+<td class='task__date'>
+OUT1;
+    return $timeLeft;
+}
