@@ -56,8 +56,9 @@ $period
 </div>
 OUT;
         return $periodOutput;
-    }elseif($endHour = 0){
-        $period = (int)$endMinute . " мин. ";
+    }elseif($endHour < 24){
+    //}elseif($endHour < 0){
+        //$period = (int)$endMinute . " мин. ";
         $periodOutput = <<<OUT
 <div class="lot__timer timer timer--finishing">
 $period

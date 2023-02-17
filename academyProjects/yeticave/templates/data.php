@@ -20,7 +20,7 @@ $ads = [
         "title" => "2014 Rossignol District Snowboard",
         "category" => "Доски и лыжи",
         "prise" => (float)10999,
-        "dateEnd" => "2022-12-03",
+        "dateEnd" => "2022-12-05",
         "image" => "img/lot-1.jpg"
     ],
     [
@@ -34,7 +34,7 @@ $ads = [
         "title" => "Крепления Union Contact Pro 2015 года размер L/XL",
         "category" => "Крепления",
         "prise" => (float)8000,
-        "dateEnd" => "2022-12-16",        
+        "dateEnd" => "2022-12-07",        
         "image" => "img/lot-3.jpg"
     ],
         [
