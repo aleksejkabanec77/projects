@@ -1,3 +1,6 @@
+<?php
+require_once("init.php");
+?>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -37,34 +40,31 @@
   <main>
     <nav class="nav">
       <ul class="nav__list container">
+      <!--заполню этот список из массива категорий-->
+      <?php foreach($categories as $keyCategories => $valueCategories): ?>
         <li class="nav__item">
-          <a href="all-lots.html">Доски и лыжи</a>
+          <a class="promo__link" href="pages/all-lots.html"><?=$valueCategories['title_categories']; ?></a>
+          <?php
+          //print_r($valueCategories);
+          ?>
         </li>
-        <li class="nav__item">
-          <a href="all-lots.html">Крепления</a>
-        </li>
-        <li class="nav__item">
-          <a href="all-lots.html">Ботинки</a>
-        </li>
-        <li class="nav__item">
-          <a href="all-lots.html">Одежда</a>
-        </li>
-        <li class="nav__item">
-          <a href="all-lots.html">Инструменты</a>
-        </li>
-        <li class="nav__item">
-          <a href="all-lots.html">Разное</a>
-        </li>
+      <?php endforeach; ?>        
       </ul>
     </nav>
     <section class="lot-item container">
-      <h2>DC Ply Mens 2016/2017 Snowboard</h2>
+    <?php foreach($lot as $keyLot => $valueLot): ?>
+    <?php endforeach; ?>      
+      <h2><?=$valueLot['title_lot']; ?></h2>
       <div class="lot-item__content">
         <div class="lot-item__left">
           <div class="lot-item__image">
-            <img src="../img/lot-image.jpg" width="730" height="548" alt="Сноуборд">
+          <?php
+          $image_lot = '../'.$valueLots['image_lot'];
+          echo $image_lot;
+          ?> 
+            <img src="<?=$image_lot; ?>" width="730" height="548" alt="<?=$valueLot['title_lot']; ?>">
           </div>
-          <p class="lot-item__category">Категория: <span>Доски и лыжи</span></p>
+          <p class="lot-item__category">Категория: <span><?=$valueLot['title_categories'] ; ?></span></p>
           <p class="lot-item__description">Легкий маневренный сноуборд, готовый дать жару в любом парке, растопив
             снег
             мощным щелчком и четкими дугами. Стекловолокно Bi-Ax, уложенное в двух направлениях, наделяет этот
@@ -80,6 +80,7 @@
           <div class="lot-item__state">
             <div class="lot-item__timer timer">
               10:54
+
             </div>
             <div class="lot-item__cost-state">
               <div class="lot-item__rate">
@@ -164,24 +165,11 @@
 <footer class="main-footer">
   <nav class="nav">
     <ul class="nav__list container">
+    <?php foreach($categories as $keyCategories => $valueCategories): ?>
       <li class="nav__item">
-        <a href="all-lots.html">Доски и лыжи</a>
+        <a class="promo__link" href="pages/all-lots.html"><?=$valueCategories['title_categories']; ?></a>
       </li>
-      <li class="nav__item">
-        <a href="all-lots.html">Крепления</a>
-      </li>
-      <li class="nav__item">
-        <a href="all-lots.html">Ботинки</a>
-      </li>
-      <li class="nav__item">
-        <a href="all-lots.html">Одежда</a>
-      </li>
-      <li class="nav__item">
-        <a href="all-lots.html">Инструменты</a>
-      </li>
-      <li class="nav__item">
-        <a href="all-lots.html">Разное</a>
-      </li>
+    <?php endforeach; ?>     
     </ul>
   </nav>
   <div class="main-footer__bottom container">

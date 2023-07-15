@@ -32,3 +32,6 @@ function include_template(string $name, array $data = []) {
 
     return $result;
 }
+/**
+ * Функция для запроса на показ лотов ????
+ */
