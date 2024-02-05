@@ -1,25 +1,24 @@
-<?php 
-require_once("query.php");
-$db = require_once 'dbYetiCave.php';
+<?php
+$db = require_once 'YetiCaveDB.php';
 /*
  * Создание подключения к базе данных
  */ 
 $link = mysqli_connect($db['host'], $db['user'], $db['password'], $db['database']); 
-mysqli_set_charset($link, $db['charset']); 
+mysqli_set_charset($link, $db['charset']);
 /*
  * Инициализация массивов категорий и объявлений
- */ 
+*/ 
 $categories = [];
 $lots = [];
 /*
- * Проверка правильности подключения к БД
+ * Проверка правильности подключения к БД и вывод меню
  */
 if(!$link)
 {
 	echo 'Ошибка соединения: ' . mysqli_connect_error() . '<br>';
 	echo 'Код ошибки: ' . mysqli_connect_errno();
 }else{ // Соединение успешно установленно, выполняем запрос к БД
-	$query = "SELECT id_categories, title_categories, character_code FROM categories";
+	$query = "SELECT catalog_id, title, character_code FROM catalog";
 	$result = mysqli_query($link, $query);
 	if(!$result) // Проверка запроса
 	{
@@ -32,9 +31,11 @@ if(!$link)
 /*
  * Вывод лотов
  */
-$query = "SELECT title_categories, title_lot, starting_price, validity_lot, id_lots, image_lot
-	FROM categories 
-	INNER JOIN lots ON categories_id = id_categories";
+$query = "SELECT title, lot_title, starting_price, completion_date, lot_id, image_addr
+	FROM catalog 
+	INNER JOIN lot ON id_catalog = catalog_id 
+	WHERE completion_date > NOW()
+	ORDER BY creation_date DESC";
 $result = mysqli_query($link, $query);
 if(!$result) // Проверка запроса
 {
@@ -42,30 +43,4 @@ if(!$result) // Проверка запроса
 	echo 'Код ошибки:' . mysqli_errno($link);	
 }else{
 	$lots = mysqli_fetch_all($result, MYSQLI_ASSOC);
-}
-/*
- * Вывод лота
- */
-$lotId = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
-$lotId = (int)$lotId;
-//echo $lotId;
-
-/* 	$query = "SELECT id_lots, title_lot 
-			FROM lots 
-			WHERE id_lots = $lotId"; */
-			
-$query = "SELECT title_lot, title_categories, image_lot  
-		FROM  categories 
-		INNER JOIN lots ON categories_id = id_categories
-		WHERE id_lots = $lotId";
-
-$result = mysqli_query($link, $query);
-if(!$result) // Проверка запроса
-{
-	echo 'Ошибка запроса ЛОТ: ' . mysqli_error($link);
-	echo 'Код ошибки:' . mysqli_errno($link);	
-}else{
-	$lot = mysqli_fetch_all($result, MYSQLI_ASSOC);
-	//print_r($lot);
-	//var_dump($lot);
 }

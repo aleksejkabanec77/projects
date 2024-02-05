@@ -1,8 +1,12 @@
+<?php
+$is_auth = rand(0, 1); // рэндом
+$user_name = 'Guest'; // укажите здесь ваше имя
+?>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title><?= $title; ?></title>
+    <title>Главная</title>
     <link href="css/normalize.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 </head>
@@ -22,28 +26,32 @@
         <a class="main-header__add-lot button" href="pages/add-lot.html">Добавить лот</a>
 
         <nav class="user-menu">
+
         <!-- здесь должен быть PHP код для показа меню и данных пользователя -->
-            <?php if($is_auth == 1): ?>
-                <div class="user-menu__logged">
-                    <p><?= $user_name ?></p>
-                    <a class="user-menu__bets" href="pages/my-bets.html">Мои ставки</a>
-                    <a class="user-menu__logout" href="#">Выход</a>
-                </div>
-            <?php else: ?>
-                <ul class="user-menu__list">
-                    <li class="user-menu__item">
-                        <a href="#">Регистрация</a>
-                    </li>
-                    <li class="user-menu__item">
-                        <a href="#">Вход</a>
-                    </li>
-                </ul>
-            <?php endif ?>
+        <?php if($is_auth): ?>
+			<div class="user-menu__logged">
+			  <p><?=$user_name ?></p>
+			  <a class="user-menu__bets" href="pages/my-bets.html">Мои ставки</a>
+			  <a class="user-menu__logout" href="#">Выход</a>
+			</div>
+		<?php else: ?>
+			<ul class="user-menu__list">
+			  <li class="user-menu__item">
+				<a href="#">Регистрация</a>
+			  </li>
+			  <li class="user-menu__item">
+				<a href="#">Вход</a>
+			  </li>
+			</ul>
+		<?php endif; ?>
         </nav>
     </div>
 </header>
+
 <main class="container">
-    <?= $content; ?>
+	
+	<?= $content; ?>
+    
 </main>
 </div>
 
@@ -53,9 +61,9 @@
             <!--заполните этот список из массива категорий-->
             <?php foreach($categories as $keyCategories => $valueCategories): ?>
             <li class="nav__item">
-                <a href="pages/all-lots.html"><?=$valueCategories['title']; ?></a>
+                <a href="pages/all-lots.html"><?=$valueCategories[title]; ?></a>
             </li>
-            <?php endforeach; ?>
+            <?php endforeach; ?>            
         </ul>
     </nav>
     <div class="main-footer__bottom container">
